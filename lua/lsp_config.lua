@@ -27,7 +27,7 @@ local on_attach = function(client, bufnr)
   end, bufopts)
   vim.keymap.set('n', '<leader>D', vim.lsp.buf.type_definition, bufopts)
   vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, bufopts)
-  vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, bufopts)
+  vim.keymap.set('n', '<leader>a', vim.lsp.buf.code_action, bufopts)
   vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
   vim.keymap.set('n', '<leader>f', vim.lsp.buf.formatting, bufopts)
 end
@@ -37,24 +37,24 @@ local lsp_flags = {
   debounce_text_changes = 150,
 }
 
-require('lspconfig')['pyright'].setup{
+local lspconfig = require('lspconfig')
+
+lspconfig.pyright.setup{
     on_attach = on_attach,
     flags = lsp_flags,
 }
 
-require('lspconfig')['tsserver'].setup{
+lspconfig.tsserver.setup{
     on_attach = on_attach,
     flags = lsp_flags,
 }
 
-require('lspconfig')['gopls'].setup{
+lspconfig.gopls.setup{
     on_attach = on_attach,
     flags = lsp_flags,
 }
 
-
-
-require('lspconfig')['rust_analyzer'].setup{
+lspconfig.rust_analyzer.setup{
     on_attach = on_attach,
     flags = lsp_flags,
     -- Server-specific settings...
@@ -62,3 +62,20 @@ require('lspconfig')['rust_analyzer'].setup{
       ["rust-analyzer"] = {}
     }
 }
+
+lspconfig.emmet_ls.setup({
+    on_attach = on_attach,
+    capabilities = capabilities,
+    filetypes = { 'html', 'typescriptreact', 'javascriptreact', 'css', 'sass', 'scss', 'less', 'yew'},
+    init_options = {
+      html = {
+        options = {
+          -- For possible options, see: https://github.com/emmetio/emmet/blob/master/src/config.ts#L79-L267
+          ["bem.enabled"] = true,
+        },
+      },
+    }
+})
+
+
+

@@ -3,6 +3,7 @@ require("plugins")
 require("mason").setup()
 
 vim.g.mapleader = " "
+
 -- wrap
 vim.cmd("set nowrap")
 
@@ -23,16 +24,20 @@ vim.cmd("colorscheme seoul256")
 vim.cmd("let g:seoul256_background = 234")
 vim.cmd("colo seoul256")
 
--- save on escape key press
-vim.api.nvim_set_keymap('i', '<ESC>', '<ESC>:w<CR>', { noremap = true })
--- same on normal mode for convenience
-vim.api.nvim_set_keymap('n', '<ESC>', '<ESC>:w<CR>', { noremap = true })
+-- save and format on escape key press
+vim.api.nvim_set_keymap('i', '<ESC>', '<ESC>:lua vim.lsp.buf.formatting_sync(nil, 10000)<CR>:w<CR>', { noremap = true })
 
--- open file tree
+-- same on normal mode for convenience
+vim.api.nvim_set_keymap('n', '<ESC>', '<ESC>:lua vim.lsp.buf.formatting_sync(nil, 10000)<CR>:w<CR>', { noremap = true })
+
+-- open file tree to the side
 vim.api.nvim_set_keymap('n', '<Leader>o', ':Vex<CR>', { noremap = true })
 
+-- open file tree full screen
+vim.api.nvim_set_keymap('n', '<Leader>O', ':Rex<CR>', { noremap = true })
+
 -- full screen current buffer, write all open buffers, and close them
-vim.api.nvim_set_keymap('n', '<Leader> ', '%bd!|e#<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<Leader><Leader>', ':%bd|e#<CR><CR>', { noremap = true })
 
 -- floattterm
 vim.api.nvim_set_keymap('n', "<leader>\\", ":FloatermNew --name=myfloat --height=0.8 --width=0.7 --autoclose=2 fish <CR> ", { noremap = true })
@@ -45,19 +50,9 @@ vim.api.nvim_set_keymap('n', "<leader>r", ":<Up><CR>", { noremap = true })
 
 
 -- auto-close
-vim.api.nvim_set_keymap('i', '"', '""<left>', { noremap = true })
-vim.api.nvim_set_keymap('i', "'", "''<left>", { noremap = true })
-vim.api.nvim_set_keymap('i', "(", "()<left>", { noremap = true })
-vim.api.nvim_set_keymap('i', "{", "{}<left>", { noremap = true })
-vim.api.nvim_set_keymap('i', "[", "[]<left>", { noremap = true })
 vim.api.nvim_set_keymap('i', "{<CR>", "{<CR>}<ESC>O", { noremap = true })
 
--- auto-close fix
-vim.api.nvim_set_keymap('i', '""', '""', { noremap = true })
-vim.api.nvim_set_keymap('i', "''", "''", { noremap = true })
-vim.api.nvim_set_keymap('i', "()", "()", { noremap = true })
-vim.api.nvim_set_keymap('i', "{}", "{}", { noremap = true })
-vim.api.nvim_set_keymap('i', "[]", "[]", { noremap = true })
+
 
 vim.cmd('autocmd TextChanged,TextChangedI . silent write')
 
@@ -66,7 +61,6 @@ vim.cmd('autocmd TextChanged,TextChangedI . silent write')
 vim.api.nvim_set_keymap('n', "<C-p>", ":FZF<CR>", { noremap = true })
 vim.api.nvim_set_keymap('i', "<C-p>", ":FZF<CR>", { noremap = true })
 vim.api.nvim_set_keymap('v', "<C-p>", ":FZF<CR>", { noremap = true })
-
 
 
 -- language specific
@@ -121,27 +115,6 @@ sign({name = 'DiagnosticSignError', text = '✗'})
 sign({name = 'DiagnosticSignWarn', text = '⚠'})
 sign({name = 'DiagnosticSignHint', text = ''})
 sign({name = 'DiagnosticSignInfo', text = ''})
-
-vim.diagnostic.config({
-    virtual_text = false,
-    signs = true,
-    update_in_insert = true,
-    underline = true,
-    severity_sort = false,
-    float = {
-        border = 'rounded',
-        source = 'always',
-        header = '',
-        prefix = '',
-    },
-})
-
-vim.cmd([[
-set signcolumn=yes
-autocmd cursorhold * lua vim.diagnostic.open_float(nil, { focusable = false })
-]])
-
-
 
 -- Completion Plugin Setup
 local cmp = require'cmp'
