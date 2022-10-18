@@ -7,16 +7,14 @@ vim.g.mapleader = " "
 -- wrap
 vim.cmd("set nowrap")
 
+-- tabs
+vim.cmd("set tabstop=8")
+vim.cmd("set softtabstop=0 noexpandtab")
+vim.cmd("set shiftwidth=8")
+
 -- numbers
 vim.cmd("set rnu")
 vim.cmd("set nu")
-
--- tabs
-vim.cmd("set tabstop=2")
-vim.cmd("set softtabstop=2")
-vim.cmd("set shiftwidth=0")
-vim.cmd("set expandtab")
-
 
 -- colorscheme
 vim.cmd("colorscheme seoul256")
@@ -24,11 +22,15 @@ vim.cmd("colorscheme seoul256")
 vim.cmd("let g:seoul256_background = 234")
 vim.cmd("colo seoul256")
 
--- save and format on escape key press
-vim.api.nvim_set_keymap('i', '<ESC>', '<ESC>:lua vim.lsp.buf.formatting_sync(nil, 10000)<CR>:w<CR>', { noremap = true })
+-- save on escape key press
+vim.api.nvim_set_keymap('i', '<ESC>', '<ESC>:w<CR>', { noremap = true })
 
 -- same on normal mode for convenience
-vim.api.nvim_set_keymap('n', '<ESC>', '<ESC>:lua vim.lsp.buf.formatting_sync(nil, 10000)<CR>:w<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<ESC>', '<ESC>:w<CR>', { noremap = true })
+
+-- format
+vim.api.nvim_set_keymap('n', '<leader>l', ':lua vim.lsp.buf.formatting_sync(nil, 10000)<CR>', { noremap = true })
+
 
 -- open file tree to the side
 vim.api.nvim_set_keymap('n', '<Leader>o', ':Vex<CR>', { noremap = true })
@@ -44,35 +46,28 @@ vim.api.nvim_set_keymap('n', "<leader>\\", ":FloatermNew --name=myfloat --height
 vim.api.nvim_set_keymap('n', "\\", ":FloatermToggle myfloat<CR>", { noremap = true })
 vim.api.nvim_set_keymap('t', "<Esc>", "<C-\\><C-n>:q<CR>", { noremap = true })
 
-
 -- repeat previous command
-vim.api.nvim_set_keymap('n', "<leader>r", ":<Up><CR>", { noremap = true })
-
+vim.api.nvim_set_keymap('n', "<leader>R", ":<Up><CR>", { noremap = true })
 
 -- auto-close
 vim.api.nvim_set_keymap('i', "{<CR>", "{<CR>}<ESC>O", { noremap = true })
 
-
-
 vim.cmd('autocmd TextChanged,TextChangedI . silent write')
 
+require('fuzz') -- fzf
 
--- fzf
-vim.api.nvim_set_keymap('n', "<C-p>", ":FZF<CR>", { noremap = true })
-vim.api.nvim_set_keymap('i', "<C-p>", ":FZF<CR>", { noremap = true })
-vim.api.nvim_set_keymap('v', "<C-p>", ":FZF<CR>", { noremap = true })
-
-
--- language specific
+-- language specific (rust actions)
 local rt = {
     server = {
         settings = {
             on_attach = function(_, bufnr)
                 -- Hover actions
-                vim.keymap.set("n", "<C-space>", rt.hover_actions.hover_actions, { buffer = bufnr })
+                vim.keymap.set("n", "<Leader>ha", rt.hover_actions.hover_actions, { buffer = bufnr })
 
                 -- Code action groups
                 vim.keymap.set("n", "<Leader>a", rt.code_action_group.code_action_group, { buffer = bufnr })
+                vim.keymap.set("v", "<Leader>a", rt.code_action_group.code_action_group, { buffer = bufnr })
+
                 require 'illuminate'.on_attach(client)
             end,
             ["rust-analyzer"] = {
@@ -126,12 +121,9 @@ cmp.setup({
     end,
   },
   mapping = {
-    ['<C-p>'] = cmp.mapping.select_prev_item(),
-    ['<C-n>'] = cmp.mapping.select_next_item(),
-    -- Add tab support
     ['<S-Tab>'] = cmp.mapping.select_prev_item(),
     ['<Tab>'] = cmp.mapping.select_next_item(),
-    ['<C-S-f>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-b>'] = cmp.mapping.scroll_docs(-4),
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
     ['<C-Space>'] = cmp.mapping.complete(),
     ['<C-e>'] = cmp.mapping.close(),

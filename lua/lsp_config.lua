@@ -28,8 +28,8 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', '<leader>D', vim.lsp.buf.type_definition, bufopts)
   vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, bufopts)
   vim.keymap.set('n', '<leader>a', vim.lsp.buf.code_action, bufopts)
+  vim.keymap.set('v', '<leader>a', ":lua vim.lsp.buf.range_code_action()<CR>", bufopts) -- code actions visual mode
   vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
-  vim.keymap.set('n', '<leader>f', vim.lsp.buf.formatting, bufopts)
 end
 
 local lsp_flags = {
@@ -50,6 +50,11 @@ lspconfig.tsserver.setup{
 }
 
 lspconfig.gopls.setup{
+    on_attach = on_attach,
+    flags = lsp_flags,
+}
+
+lspconfig.intelephense.setup{
     on_attach = on_attach,
     flags = lsp_flags,
 }

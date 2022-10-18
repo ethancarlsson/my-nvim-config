@@ -34,6 +34,7 @@ return require('packer').startup(function(use)
 
   -- fuzzy finder
   use 'junegunn/fzf'
+  use 'junegunn/fzf.vim'
 
   -- float-term
   use 'voldikss/vim-floaterm'
