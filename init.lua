@@ -7,3 +7,5 @@ require('language_server_config')
 require('treesitter_setup')
 require('floatterm')
 require('go')
+require('hurl')
+
