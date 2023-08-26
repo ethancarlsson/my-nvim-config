@@ -51,5 +51,3 @@ vim.keymap.set(
 
 -- Formatting
 vim.keymap.set({ 'n', 'v' }, '<leader>l', vim.lsp.buf.format)
-
-vim.keymap.set({'t'}, '<ESC>', vim.lsp.buf.format)
