@@ -51,3 +51,6 @@ vim.keymap.set(
 
 -- Formatting
 vim.keymap.set({ 'n', 'v' }, '<leader>l', vim.lsp.buf.format)
+
+-- Source current file
+vim.keymap.set('n', '<leader>ss', '<cmd>source %<CR>')
