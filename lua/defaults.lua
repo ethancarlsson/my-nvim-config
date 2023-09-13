@@ -3,6 +3,7 @@
 
 -- general options
 vim.g.mapleader = ' '
+vim.g.maplocalleader = ','
 
 -- window options
 vim.wo.colorcolumn = '80'
