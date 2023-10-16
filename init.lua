@@ -11,3 +11,5 @@ require('go')
 require('hurl')
 
 require('snippets.main')
+
+require("notes")
