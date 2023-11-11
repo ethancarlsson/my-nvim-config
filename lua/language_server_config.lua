@@ -13,6 +13,9 @@ local mason_lspconfig = require("mason-lspconfig")
 local lspconfig = require("lspconfig")
 
 local servers = require("lsp/language_servers")
+
+local on_attach = require("lsp/on_attach")
+
 mason_lspconfig.setup({
 	ensure_installed = vim.tbl_keys(servers),
 })
@@ -21,7 +24,7 @@ mason_lspconfig.setup_handlers({
 	function(server_name)
 		lspconfig[server_name].setup({
 			capabilities = caps,
-			on_attach = require("lsp/on_attach"),
+			on_attach = on_attach,
 			settings = servers[server_name],
 			filetypes = (servers[server_name] or {}).filetypes,
 		})
@@ -30,16 +33,16 @@ mason_lspconfig.setup_handlers({
 
 lspconfig.fennel_ls.setup({
 	capabilities = caps,
-	on_attach = require("lsp/on_attach"),
+	on_attach = on_attach,
 })
 
-lspconfig.ccls.setup {
-  init_options = {
-    cache = {
-      directory = ".ccls-cache";
-    };
-  }
-}
+lspconfig.ccls.setup({
+	init_options = {
+		cache = {
+			directory = ".ccls-cache",
+		},
+	},
+})
 
 -- [[ Configure nvim-cmp ]]
 -- See `:help cmp`

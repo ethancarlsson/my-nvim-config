@@ -9,7 +9,9 @@ require('floatterm')
 
 require('go')
 require('hurl')
+require('bqn_custom')
 
 require('snippets.main')
 
 require("notes")
+
