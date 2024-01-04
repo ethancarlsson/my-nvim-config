@@ -36,13 +36,15 @@ lspconfig.fennel_ls.setup({
 	on_attach = on_attach,
 })
 
-lspconfig.ccls.setup({
+lspconfig.ccls = {
 	init_options = {
 		cache = {
 			directory = ".ccls-cache",
 		},
 	},
-})
+}
+
+lspconfig.bqnlsp.setup({})
 
 -- [[ Configure nvim-cmp ]]
 -- See `:help cmp`
