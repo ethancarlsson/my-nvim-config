@@ -1,6 +1,6 @@
 return {
 	"tpope/vim-surround",
-	-- "tpope/vim-sleuth",
+	"tpope/vim-sleuth",
 	-- Useful plugin to show you pending keybinds.
 	{ "folke/which-key.nvim", opts = {} },
 	{

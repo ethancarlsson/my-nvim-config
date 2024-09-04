@@ -54,3 +54,8 @@ vim.keymap.set({ 'n', 'v' }, '<leader>l', '<cmd>Format<CR>')
 
 -- Source current file
 vim.keymap.set('n', '<leader>ss', '<cmd>source %<CR>')
+
+
+-- neotes
+vim.keymap.set('n', '<leader>tt', '<cmd>lua require("neotest").run.run(vim.fn.expand("%"))<CR>')
+vim.keymap.set('n', '<leader>to', '<cmd>lua require("neotest").output.open({ enter = true })<CR>')
