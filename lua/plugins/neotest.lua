@@ -7,11 +7,13 @@ return {
 			"antoinemadec/FixCursorHold.nvim",
 			"nvim-treesitter/nvim-treesitter",
 			"nvim-neotest/neotest-jest",
+			"nvim-neotest/neotest-go",
 		},
 
 		config = function()
 			require("neotest").setup({
 				adapters = {
+					require("neotest-go"),
 					require("neotest-jest")({
 						jestCommand = "npm test --",
 						jestConfigFile = "custom.jest.config.ts",
