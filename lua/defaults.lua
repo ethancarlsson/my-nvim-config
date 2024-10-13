@@ -5,6 +5,9 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ','
 
+vim.filetype.add({ extension = { ua = 'uiua' } })
+vim.filetype.add({ extension = { templ = 'templ' } })
+
 -- window options
 vim.wo.colorcolumn = '80'
 vim.wo.relativenumber = true
@@ -39,4 +42,5 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     vim.highlight.on_yank { higroup = 'IncSearch', timeout = 500 }
   end,
 })
+
 

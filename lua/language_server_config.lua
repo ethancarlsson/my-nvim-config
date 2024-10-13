@@ -44,6 +44,9 @@ lspconfig.ccls = {
 	},
 }
 
+lspconfig.templ.setup({})
+
+
 lspconfig.bqnlsp.setup({})
 
 -- [[ Configure nvim-cmp ]]
