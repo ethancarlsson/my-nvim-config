@@ -1,4 +1,5 @@
 return {
+	"rhysd/reply.vim",
 	"tpope/vim-surround",
 	"tpope/vim-sleuth",
 	-- Useful plugin to show you pending keybinds.

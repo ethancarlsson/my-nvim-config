@@ -8,6 +8,7 @@ require('treesitter_setup')
 require('floatterm')
 
 require('go')
+require('guile')
 require('hurl')
 require('bqn_custom')
 

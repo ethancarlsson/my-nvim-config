@@ -32,8 +32,8 @@ mason_lspconfig.setup_handlers({
 })
 
 lspconfig.fennel_ls.setup({
-	capabilities = caps,
 	on_attach = on_attach,
+	capabilities = caps,
 })
 
 lspconfig.ccls = {
