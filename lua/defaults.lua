@@ -4,6 +4,7 @@
 -- general options
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ','
+vim.o.autowrite = true
 
 vim.filetype.add({ extension = { ua = 'uiua' } })
 vim.filetype.add({ extension = { templ = 'templ' } })

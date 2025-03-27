@@ -63,4 +63,9 @@ return {
 		},
 	},
 	{ "echasnovski/mini.nvim", version = "*" },
+	{
+		"brianhuster/autosave.nvim",
+		event = "InsertEnter",
+		opts = {}, -- Configuration here
+	},
 }

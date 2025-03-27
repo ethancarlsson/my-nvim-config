@@ -1,6 +1,6 @@
 vim.keymap.set("n", "-", ":Explore<CR>")
--- Save on escape
-vim.keymap.set({ "n", "i" }, "<ESC>", "<ESC>:w<CR>")
+-- Save
+vim.keymap.set({ "n" }, " w", "<ESC>:w<CR>")
 
 -- stay in visual mode when indenting
 vim.keymap.set("v", ">", ">gv")
