@@ -44,8 +44,50 @@ lspconfig.ccls = {
 	},
 }
 
-lspconfig.templ.setup({})
+lspconfig.volar.setup({
+	-- add filetypes for typescript, javascript and vue
+	filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
+	init_options = {
+		vue = {
+			-- disable hybrid mode
+			hybridMode = false,
+		},
+	},
+})
+-- you must remove ts_ls setup
+-- lspconfig.ts_ls.setup {}
 
+lspconfig.ts_ls = {
+	init_options = {
+		plugins = {
+			{
+				name = "@vue/typescript-plugin",
+				location = vim.fn.stdpath("data")
+					.. "/mason/packages/vue-language-server/node_modules/@vue/language-server",
+				languages = { "vue" },
+			},
+		},
+	},
+	settings = {
+		typescript = {
+			tsserver = {
+				useSyntaxServer = false,
+			},
+			inlayHints = {
+				includeInlayParameterNameHints = "all",
+				includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+				includeInlayFunctionParameterTypeHints = true,
+				includeInlayVariableTypeHints = true,
+				includeInlayVariableTypeHintsWhenTypeMatchesName = true,
+				includeInlayPropertyDeclarationTypeHints = true,
+				includeInlayFunctionLikeReturnTypeHints = true,
+				includeInlayEnumMemberValueHints = true,
+			},
+		},
+	},
+}
+
+lspconfig.templ.setup({})
 
 lspconfig.bqnlsp.setup({})
 
@@ -75,7 +117,7 @@ cmp.setup({
 		["<Tab>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
 				cmp.select_next_item()
-			-- elseif luasnip.expand_or_locally_jumpable() then
+				-- elseif luasnip.expand_or_locally_jumpable() then
 				-- luasnip.expand_or_jump()
 			else
 				fallback()
