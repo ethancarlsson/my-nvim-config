@@ -1,3 +1,7 @@
+-- Configuration
+vim.g.neoformat_try_node_exe = 1
+
+-- Function override for when custom formatting is needed or wanted
 return function(_)
 	if vim.bo.filetype == "json" then
 		local curr_pos = vim.api.nvim_win_get_cursor(vim.api.nvim_get_current_win())
@@ -15,3 +19,5 @@ return function(_)
 
 	vim.cmd("silent Neoformat")
 end
+
+
