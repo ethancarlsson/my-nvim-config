@@ -46,7 +46,7 @@ vim.keymap.set(
 	"n",
 	"<leader>tf",
 	"<cmd>lua require('neotest').run.run(vim.fn.expand('%'))<CR>",
-	{ desc = "Run closest test" }
+	{ desc = "Run file tests" }
 )
 
 vim.keymap.set(
