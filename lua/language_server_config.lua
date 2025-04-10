@@ -46,7 +46,7 @@ lspconfig.ccls = {
 
 lspconfig.volar.setup({
 	-- add filetypes for typescript, javascript and vue
-	filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
+	filetypes = { "typescript", "javascript", "javascriptreact","vue" },
 	init_options = {
 		vue = {
 			-- disable hybrid mode
