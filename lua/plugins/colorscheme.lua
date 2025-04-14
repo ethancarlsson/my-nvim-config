@@ -1,4 +1,4 @@
 return {
-	{ 'catppuccin/nvim', name = 'catppuccin' },
+	{ "ellisonleao/gruvbox.nvim", priority = 1000 , config = true},
 	'HiPhish/rainbow-delimiters.nvim'
 }
