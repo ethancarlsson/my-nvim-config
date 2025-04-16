@@ -54,8 +54,6 @@ lspconfig.volar.setup({
 		},
 	},
 })
--- you must remove ts_ls setup
--- lspconfig.ts_ls.setup {}
 
 lspconfig.ts_ls = {
 	init_options = {
