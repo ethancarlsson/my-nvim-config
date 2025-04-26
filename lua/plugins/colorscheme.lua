@@ -1,4 +1,4 @@
 return {
-	"yorickpeterse/vim-paper",
+	{ "ellisonleao/gruvbox.nvim", priority = 1000, config = true, opts = {} },
 	"HiPhish/rainbow-delimiters.nvim",
 }
