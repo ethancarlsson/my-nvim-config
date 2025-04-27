@@ -62,3 +62,23 @@ vim.keymap.set(
 	'<cmd>lua require("neotest").output.open({ enter = true })<CR>',
 	{ desc = "View output of previous run of test file" }
 )
+
+function CaptureCopilotSuggestion()
+	local before = vim.fn.getline("."):sub(1, vim.fn.col(".") - 1)
+	local suggestion = vim.fn["copilot#TextQueuedForInsertion"]()
+	local log_entry = string.format("%s,%s", before, suggestion)
+
+	-- Append the log entry to a file
+	local log_file_path = "/Users/ethancarlsson/.config/nvim_copilot/copilot_log.txt"
+	local file = io.open(log_file_path, "a")
+	file = file or io.open(log_file_path, "a")
+
+	if file then
+		file:write(log_entry .. "\n")
+		file:close()
+	end
+	vim.fn["copilot#Accept"]("<CR>")
+	return suggestion
+end
+
+vim.api.nvim_set_keymap("i", "<C-l>", [[v:lua.CaptureCopilotSuggestion()]], { expr = true, silent = true })

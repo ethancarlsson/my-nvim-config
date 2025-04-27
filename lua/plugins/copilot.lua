@@ -14,7 +14,16 @@ return {
 			{ "nvim-lua/plenary.nvim", branch = "master" }, -- for curl, log and async functions
 		},
 		build = "make tiktoken",
-		opts = {
+		config = {
+			mappings = {
+				reset = {
+					insert = "<C-r>",
+					normal = "<C-r>",
+					callback = function()
+						require("CopilotChat").reset()
+					end,
+				},
+			},
 		},
 	},
 }
