@@ -15,6 +15,3 @@ require("snippets.main")
 
 require("notes")
 
-require("comments")
-
--- This part changes the colorscheme based on time of day
