@@ -8,7 +8,6 @@
 (require "treesitter_setup")
 (require "floatterm")
 
-(require "go")
 (require "hurl")
 
 (require "snippets.main")
