@@ -5,8 +5,8 @@
 (require "remaps")
 (require "fuzzy/fuzzy_finding")
 (require "language_server_config")
-(require "treesitter_setup")
 (require "floatterm")
+(require "treesitter_setup")
 
 (require "hurl")
 
