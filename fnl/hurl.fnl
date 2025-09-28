@@ -1,68 +1,32 @@
 (local nvim-hurl (require :nvim-hurl))
 (nvim-hurl.setup {:log false})
 
-(vim.keymap.set
-	"n"
-	"<leader>hy"
-	"<cmd>HurlYank<CR>"
-	{ :desc "Run hurl file in buffer and yank contents to the register \"*\"" }
-)
-(vim.keymap.set
-	"n"
-	"<leader>hr"
-	"<cmd>HurlRun<CR>"
-	{ :desc "Run hurl file in buffer and paste it's content into a split window" }
-)
-(vim.keymap.set
-	"n"
-	"<leader>hv"
-	"<cmd>HurlRunVerbose<CR>"
-	{ :desc "Run hurl file and get additional meta info along with it" }
-)
-(vim.keymap.set
-	"n"
-	"<leader>hh"
-	"<cmd>CurlGoFromCursor<CR>"
-	{ :desc "Run a curl request from the url under the cursor" }
-)
-(vim.keymap.set
-	"n"
-	"<leader>hc"
-	"<cmd>Hurlvc<CR>"
-	{ :desc "Clear all --variable options from your next Hurl command" }
-)
+(vim.keymap.set :n :<leader>hy :<cmd>HurlYank<CR>
+                {:desc "Run hurl file in buffer and yank contents to the register \"*\""})
 
-(vim.keymap.set
-	"v"
-	"<leader>hy"
-	":'<,'>HurlYank<CR>"
-	{ :desc "Run hurl file in buffer and yank contents to the register \"*\"" }
-)
+(vim.keymap.set :n :<leader>hr :<cmd>HurlRun<CR>
+                {:desc "Run hurl file in buffer and paste it's content into a split window"})
 
-(vim.keymap.set
-	"v"
-	"<leader>hr"
-	":'<,'>HurlRun<CR>"
-	{ :desc "Run hurl file in buffer and paste it's content into a split window" }
-)
-(vim.keymap.set
-	"v"
-	"<leader>hv"
-	":'<,'>HurlRunVerbose<CR>"
-	{ :desc "Run hurl file and get additional meta info along with it" }
-)
+(vim.keymap.set :n :<leader>hv :<cmd>HurlRunVerbose<CR>
+                {:desc "Run hurl file and get additional meta info along with it"})
 
-(vim.keymap.set
-	"n"
-	"<leader>hy"
-	"<cmd>Hurlsvr \"*<CR>"
-	{ :desc "Copy values from the register into the temp variables of the hurl file" }
-)
+(vim.keymap.set :n :<leader>hh :<cmd>CurlGoFromCursor<CR>
+                {:desc "Run a curl request from the url under the cursor"})
 
-(vim.keymap.set
-	"n"
-	"<leader>yh"
-	"\"8yy<cmd>Hurlsvr \"8<CR>"
-	{ :desc "Copy line to register and then to hurl variables" }
-)
+(vim.keymap.set :n :<leader>hc :<cmd>Hurlvc<CR>
+                {:desc "Clear all --variable options from your next Hurl command"})
 
+(vim.keymap.set :v :<leader>hy ":'<,'>HurlYank<CR>"
+                {:desc "Run hurl file in buffer and yank contents to the register \"*\""})
+
+(vim.keymap.set :v :<leader>hr ":'<,'>HurlRun<CR>"
+                {:desc "Run hurl file in buffer and paste it's content into a split window"})
+
+(vim.keymap.set :v :<leader>hv ":'<,'>HurlRunVerbose<CR>"
+                {:desc "Run hurl file and get additional meta info along with it"})
+
+(vim.keymap.set :n :<leader>hy "<cmd>Hurlsvr \"*<CR>"
+                {:desc "Copy values from the register into the temp variables of the hurl file"})
+
+(vim.keymap.set :n :<leader>yh "\"8yy<cmd>Hurlsvr \"8<CR>"
+                {:desc "Copy line to register and then to hurl variables"})

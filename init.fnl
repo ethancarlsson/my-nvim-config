@@ -3,7 +3,7 @@
 (require "plugins_setup")
 (require "colorscheme")
 (require "remaps")
-(require "fuzzy/fuzzy_finding")
+(require "fuzzy_finding")
 (require "language_server_config")
 (require "floatterm")
 (require "treesitter_setup")
@@ -11,6 +11,3 @@
 (require "hurl")
 
 (require "snippets.main")
-
-(require "notes")
-
