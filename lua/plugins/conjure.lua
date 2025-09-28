@@ -1,27 +1,10 @@
-return {
-  {
-    "Olical/conjure",
-    ft = { "fennel" }, -- etc
-    lazy = true,
-    init = function()
-      -- Set configuration options here
-      -- Uncomment this to get verbose logging to help diagnose internal Conjure issues
-      -- This is VERY helpful when reporting an issue with the project
-      -- vim.g["conjure#debug"] = true
-    end,
-
-    -- Optional cmp-conjure integration
-    dependencies = { "PaterJason/cmp-conjure" },
-  },
-  {
-    "PaterJason/cmp-conjure",
-    lazy = true,
-    config = function()
-      local cmp = require("cmp")
-      local config = cmp.get_config()
-      table.insert(config.sources, { name = "conjure" })
-      return cmp.setup(config)
-    end,
-  },
-}
-
+-- [nfnl] fnl/plugins/conjure.fnl
+local function _1_()
+end
+local function _2_()
+  local cmp = require("cmp")
+  local config = cmp.get_config()
+  table.insert(config.sources, {name = "conjure"})
+  return cmp.setup(config)
+end
+return {{"Olical/conjure", ft = {"fennel"}, lazy = true, init = _1_, dependencies = {"PaterJason/cmp-conjure"}}, {"PaterJason/cmp-conjure", config = _2_, lazy = true}}

@@ -1,3 +1,2 @@
-return {
-	'numToStr/FTerm.nvim'
-}
+-- [nfnl] fnl/plugins/floatterm.fnl
+return {"numToStr/FTerm.nvim"}

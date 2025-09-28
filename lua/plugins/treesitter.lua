@@ -1,10 +1,2 @@
-return {
-	{
-		-- Highlight, edit, and navigate code
-		'nvim-treesitter/nvim-treesitter',
-		dependencies = {
-			'nvim-treesitter/nvim-treesitter-textobjects',
-		},
-		build = ':TSUpdate',
-	},
-}
+-- [nfnl] fnl/plugins/treesitter.fnl
+return {{"nvim-treesitter/nvim-treesitter", build = ":TSUpdate", dependencies = {"nvim-treesitter/nvim-treesitter-textobjects"}}}

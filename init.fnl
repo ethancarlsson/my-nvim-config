@@ -1,5 +1,4 @@
 (require "defaults")
-(require "defaults")
 (require "plugins_setup")
 (require "colorscheme")
 (require "remaps")

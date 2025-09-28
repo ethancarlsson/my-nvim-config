@@ -1,0 +1,1 @@
+[[:ethancarlsson/nvim-hurl.nvim]]

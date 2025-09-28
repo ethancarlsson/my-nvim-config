@@ -1,0 +1,1 @@
+[:numToStr/FTerm.nvim]
