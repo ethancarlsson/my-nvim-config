@@ -7,4 +7,4 @@ local function _2_()
   table.insert(config.sources, {name = "conjure"})
   return cmp.setup(config)
 end
-return {{"Olical/conjure", ft = {"fennel"}, lazy = true, init = _1_, dependencies = {"PaterJason/cmp-conjure"}}, {"PaterJason/cmp-conjure", config = _2_, lazy = true}}
+return {{"ethancarlsson/conjure", ft = {"fennel", "go"}, lazy = true, init = _1_, dependencies = {"PaterJason/cmp-conjure"}}, {"PaterJason/cmp-conjure", config = _2_, lazy = true}}

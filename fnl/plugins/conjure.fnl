@@ -1,5 +1,5 @@
-[{1 :Olical/conjure
-  :ft [:fennel]
+[{1 "ethancarlsson/conjure"
+  :ft [:fennel :go]
   :lazy true
   :init (fn [])
   :dependencies [:PaterJason/cmp-conjure]}
