@@ -26,9 +26,7 @@ local function on_attach(ev, _)
     local function _2_()
       return print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
     end
-    nmap("<leader>ol", _2_, "W[o]rkspace [L]ist Folders")
-    vim.api.nvim_buf_create_user_command(bufnr, "Format", require("lsp.formatting.format"), {desc = "Format current buffer with LSP"})
-    return nmap("<leader>l", "<cmd>Format<CR>", "Format the buffer")
+    return nmap("<leader>ol", _2_, "W[o]rkspace [L]ist Folders")
   else
     return nil
   end

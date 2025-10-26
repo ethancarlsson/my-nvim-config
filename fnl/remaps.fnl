@@ -28,7 +28,8 @@
                 {:desc "Open diagnostics list"})
 
 ; Formatting
-(vim.keymap.set {:n :v} :<leader>l :<cmd>Format<CR>)
+(vim.keymap.set [:n :v] :<leader>l "<cmd>Neoformat<CR>"
+                {:desc "Format buffer"})
 
 ; Source current file
 (vim.keymap.set :n :<leader>ss "<cmd>source %<CR>")

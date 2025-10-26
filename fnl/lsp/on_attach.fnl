@@ -31,12 +31,6 @@
     (nmap :<leader>ol
           (fn []
             (print (vim.inspect (vim.lsp.buf.list_workspace_folders))))
-          "W[o]rkspace [L]ist Folders") ; Create a command `:Format` local to the LSP buffer
-
-    (vim.api.nvim_buf_create_user_command bufnr :Format
-                                          (require :lsp.formatting.format)
-                                          {:desc "Format current buffer with LSP"})
-    (nmap :<leader>l :<cmd>Format<CR> "Format the buffer")
-    ))
+          "W[o]rkspace [L]ist Folders")))
 
 on-attach

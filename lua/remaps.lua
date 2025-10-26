@@ -11,7 +11,7 @@ vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, {desc = "Go to previous diag
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next, {desc = "Go to next diagnostic message"})
 vim.keymap.set("n", "<leader>m", vim.diagnostic.open_float, {desc = "Open floating diagnostic message"})
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, {desc = "Open diagnostics list"})
-vim.keymap.set({n = "v"}, "<leader>l", "<cmd>Format<CR>")
+vim.keymap.set({"n", "v"}, "<leader>l", "<cmd>Neoformat<CR>", {desc = "Format buffer"})
 vim.keymap.set("n", "<leader>ss", "<cmd>source %<CR>")
 vim.keymap.set("n", "<leader>tr", "<cmd>lua require('neotest').run.run_last()<CR>", {desc = "Run last neotest command again"})
 vim.keymap.set("n", "<leader>tt", "<cmd>lua require('neotest').run.run()<CR>", {desc = "Run closest test"})

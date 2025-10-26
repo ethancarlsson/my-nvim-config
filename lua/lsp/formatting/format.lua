@@ -1,5 +1,6 @@
 -- [nfnl] fnl/lsp/formatting/format.fnl
 vim.g.neoformat_try_node_exe = 1
+print("testing")
 local function _1_(_)
   local _2_ = vim.bo.filetype
   if (_2_ == "json") then
