@@ -1,6 +1,8 @@
 [{1 :nvim-neotest/neotest
   :config (fn []
-            ((. (require :neotest) :setup) {:adapters [(require :neotest-go)
+            ((. (require :neotest) :setup) {
+                                            :log_level 0
+                                            :adapters [(require :neotest-golang)
                                                        ((require :neotest-jest) {:cwd (fn [path]
                                                                                         (vim.fn.getcwd))
                                                                                  :env {:CI true}
@@ -11,4 +13,4 @@
                  :antoinemadec/FixCursorHold.nvim
                  :nvim-treesitter/nvim-treesitter
                  :nvim-neotest/neotest-jest
-                 :nvim-neotest/neotest-go]}]	
+                 :ethancarlsson/neotest-golang]}]	
